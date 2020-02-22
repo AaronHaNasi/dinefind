@@ -125,7 +125,7 @@ a { color: darkslategrey; }
 }
 
 .mainNav li a:hover {
-  color: white;
+  text-decoration: underline;
 }
 
 /*Sign-In Page Styling*/
@@ -184,4 +184,14 @@ a { color: darkslategrey; }
 
 .MuiTypography-body1 {
   color: darkslategrey;
+}
+
+.preferences {
+  display: block;
+  float: left;
+}
+
+.filers {
+  display: block;
+  float: left;
 }
