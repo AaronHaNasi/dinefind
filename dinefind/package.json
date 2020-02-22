@@ -9,11 +9,14 @@
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^7.9.1",
     "foundation-sites": "^6.6.1",
+    "google-maps-react": "^2.0.2",
     "react": "next",
     "react-dom": "next",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "prop-types": "latest",
+    "@material-ui/lab": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

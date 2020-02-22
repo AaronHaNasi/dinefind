@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
+import {Link} from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 
 const INITIAL_STATE = {
     passwordOne: '',
@@ -65,5 +67,4 @@ class PasswordChangeForm extends Component {
         );
     }
 }
-
 export default withFirebase(PasswordChangeForm);
