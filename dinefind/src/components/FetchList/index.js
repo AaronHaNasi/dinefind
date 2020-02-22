@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function fetchList(distance, open, chains, visited, rating) {
+export default function FetchList(distance, open, chains, visited, rating) {
 return fetch('https://dinefind-269008.appspot.com/data',
     {
         headers:{

@@ -5,18 +5,19 @@
 # * 'gtrp' and 'gtr' create a GET request with or without query parameters;
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
-POST http://dinefind-269008.appspot.com/data
+POST http://35.243.204.94/
 Content-Type: application/json
 
 {
-             "radius":"20",
-             "open":"0",
-             "chain":"0",
-             "prev":"0",
-             "crowd": "0",
-             "rating": "0",
-             "price_level": "0"
-           }
+  "radius":"400",
+  "open":"True",
+  "chain":"True",
+  "prev":"True",
+  "rating_fil":"0",
+  "crowd": "0",
+  "rating_sor": "0",
+  "price": "0"
+}
 
 
 ###
