@@ -98,6 +98,12 @@ const SignInLink = () => (
     </p>
 );
 
+const SignInLink2 = () => (
+    <p className="signInLink center">
+        Go back to <Link to={ROUTES.SIGN_IN}>Log in</Link>
+    </p>
+);
+
 export default SignInPage;
 
-export { SignInForm, SignInLink };
+export { SignInForm, SignInLink, SignInLink2 };

@@ -145,7 +145,7 @@ a { color: darkslategrey; }
   margin-top: 8px;
 }
 
-.signUpLink {
+.signUpLink, .signInLink {
   color: white;
   margin-bottom: 8px;
   margin-top: 20px;
