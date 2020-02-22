@@ -121,34 +121,14 @@ def data_sort(data, sor):
         final_data.append(data["results"][int(item[0])])
     return final_data
 
-
-# current_crowd
-#
-#
-# data = get_list(15000, location())
-# name = filter_by_chain(data)[0]["name"]
-# id = filter_by_chain(data)[0]["place_id"]
-# cur = time(id)
-# print("Name: {}, Current: {}".format(name, cur))
 data = get_list(150000, location())
-# fil = {"open": 0, "chain": 1, "prev": 0, "rating": 0}
-# final_data = filter(data, fil)
-# print('\n----------------\n')
-# print(data["results"])
-# print('\n----------------\n')
-# print(final_data)
-# print('\n----------------\n')
-# print(data)
-# print('\n\n\n ---------- \n\n\n')
-
-# data_sort(data, {"crowd" : 0, "rating" : 0, "price_level" : 1})
 
 fin = data_sort(data, {"crowd" : 1, "rating" : 0, "price_level" : 0})
 print("{:50s}{:10s}{:10s}{:10s}".format("Name", "Crowd", "Rating", "Price"))
 print("#"*80)
 for item in fin:
-
     try:
         print("{:50s}{:10s}{:10f}{:>10f}".format(item["name"], "NaN", item["rating"], item["price_level"]))
     except:
         print("{:50s}{:10s}{:10f}{:>10s}".format(item["name"], "NaN", item["rating"], "NaN"))
+print()
