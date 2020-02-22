@@ -7,8 +7,6 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-document.body.style = 'background: mediumseagreen;';
-
 const SignInPage = () => (
     <div className="signInForm centered-container row">
         <div className="col-4 col-s-8">

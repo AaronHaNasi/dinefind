@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: mediumseagreen;
+  background: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -15,7 +15,7 @@ code {
 
 /*Fonts*/
 h1 {
-  color: white;
+  color: darkslategrey;
   margin-bottom: 10px;
 }
 h3 {
@@ -24,17 +24,17 @@ h3 {
 p {
   font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
   font-size: 16px;
+  color: darkslategrey;
 }
 
 a { color: darkslategrey; }
 
 .note { font-size: 12px}
 
-.white { color: white }
+.white { color: darkslategrey }
 
 /*Responsive layout classes*/
 
-/* For mobile phones: */
 .row {
   padding: 0 32px;
   display: block;
@@ -45,6 +45,14 @@ a { color: darkslategrey; }
   padding-left: 50px;
   margin-top: 0px;
   line-height: 16px;
+  font-size: 12px;
+}
+
+.fixPadding {
+  padding-left: 0px;
+  padding-top: 0px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 [class*="col-"] {
@@ -138,23 +146,23 @@ a { color: darkslategrey; }
 }
 
 .signInForm input {
-  background-color: rgba(255,255,255,0.3);
+  background-color: #eeeeee;
   box-sizing: border-box;
-  color: white;
+  color: #313131;
+  transition: background-color 0.3s;
 }
 
 .signInForm input:hover {
-  background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
 }
 
 .signInButton {
-  background-color: rgba(255, 255, 255, 0.9);;
-  color: mediumseagreen;
+  background-color: mediumseagreen;
+  color: white;
 }
 
 .signInButton:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #329058;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -164,11 +172,16 @@ a { color: darkslategrey; }
 }
 
 .signUpLink, .signInLink {
-  color: white;
+  color: darkslategrey;
   margin-bottom: 8px;
   margin-top: 20px;
 }
 
 .slider {
   width: 50%;
+  margin-top: 25px;
+}
+
+.MuiTypography-body1 {
+  color: darkslategrey;
 }

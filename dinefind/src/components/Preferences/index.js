@@ -11,35 +11,27 @@ import {Restaurant} from "../Restaurant/Restaurant";
 const marks = [
     {
         value: 0,
-        label: '0 Miles'
     },
     {
         value: 5,
-        label: '5 Miles'
     },
     {
         value: 5,
-        label: '5 Miles'
     },
     {
         value: 10,
-        label: '10 Miles'
     },
     {
         value: 15,
-        label: '15 Miles'
     },
     {
         value: 25,
-        label: '25 Miles'
     },
     {
         value: 50,
-        label: '50 Miles'
     },
     {
         value: 100,
-        label: '100 Miles'
     },
 ]
 function valuetext(value) {
@@ -63,31 +55,38 @@ export default function Preferences() {
         setState({ ...state, [name]: event.target.checked });
     };
     return(
-        <FormGroup>
-            <Typography id="discrete-slider-always" gutterBottom>
-                How far?
-            </Typography>
-            <Slider
-                name="distance"
-                className="slider"
-                defaultValue={0}
-                getAriaValueText={valuetext}
-                valueLabelDisplay="auto"
-                step={5}
-                marks={marks} />
-            <FormControlLabel control={
-                <Switch className="switch" checked={state.chains} onChange={handleChange('chains')} value="chains" />
-            } label="Do you like chain restaurants?"
+        <div className="centered-container row">
+            <div className="col-6 col-s-8">
+            <FormGroup>
+                <h1>Are you hungry...</h1>
+                <h3 className = "white">to try something new ?</h3>
+                <p>Find a restaurant that you haven't tried yet! Our default settings help you find close, local, and new restaurants. Before we begin, check your search preferences to see if you want to make any changes. You can always come back to make changes at any time.</p>
+                <h4 className="white">My Preferences</h4>
+                <Typography id="discrete-slider-always" gutterBottom>
+                    Distance in miles:
+                </Typography>
+                <Slider
+                    name="distance"
+                    className="slider"
+                    defaultValue={10}
+                    getAriaValueText={valuetext}
+                    valueLabelDisplay="auto"
+                    step={5}
+                    marks={marks} />
+                <FormControlLabel control={
+                    <Switch className="switch" checked={state.chains} onChange={handleChange('chains')} value="chains" />
+                } label="Show chain restaurants"
+                    />
+                <FormControlLabel control={
+                <Switch className="switch" checked={state.visited} onChange={handleChange('visited')} value="visited" />
+                } label="Show restaurants I have dined at before"
+                     />
+                <div class="indent"><p>(You will have the option to select and keep track of the restaurants you have been to on the search results page)</p></div>
+                <FormControlLabel control={
+                    <Switch className="switch" checked={state.open} onChange={handleChange('open')} value="open" />
+                } label="Show open & closed restaurants"
                 />
-            <FormControlLabel control={
-            <Switch className="switch" checked={state.visited} onChange={handleChange('visited')} value="visited" />
-            } label="Do you like to revisit them?"
-                 />
-            <FormControlLabel control={
-                <Switch className="switch" checked={state.open} onChange={handleChange('open')} value="open" />
-            } label="Should it be open now?"
-            />
-            <Box component="fieldset" mb={3} borderColor="transparent">
+                <Box className="fixPadding" component="fieldset" mb={3} borderColor="transparent">
                 <Typography component="legend">How should it be rated?</Typography>
                 <Rating
                     name="rating"
@@ -96,16 +95,16 @@ export default function Preferences() {
                     setValue(newValue);
                     }}
                     />
-            </Box>
-            <button
-                type = "submit"
-                onClick={event => {
-
-
-                }}
-            >
-                </button>
-        </FormGroup>
-
+                </Box>
+                <h4 className="white">My Filters</h4>
+                <button className="signInField signInButton"
+                    type = "submit"
+                    onClick={event => {
+                    }}
+                >Save My Settings
+                    </button>
+            </FormGroup>
+            </div>
+        </div>
     )
 }
