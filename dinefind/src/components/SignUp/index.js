@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { SignInLink } from "../SignIn";
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignUpPage = () => (
-    <div>
-        <SignUpForm />
+    <div className="signInForm centered-container row">
+        <div className="col-4 col-s-8">
+            <SignUpForm />
+            <SignInLink />
+        </div>
     </div>
 );
 
@@ -73,49 +77,47 @@ class SignUpFormBase extends Component {
             username === '';
 
         return (
-            <div className="signInForm centered-container">
-                <div className="centered-flexbox">
-                    <h1>Sign Up</h1>
-                    <form onSubmit={this.onSubmit}>
-                        <input
-                            className="signInField"
-                            name="username"
-                            value={username}
-                            onChange={this.onChange}
-                            type="text"
-                            placeholder="Full Name"
-                        />
-                        <input
-                            className="signInField"
-                            name="email"
-                            value={email}
-                            onChange={this.onChange}
-                            type="text"
-                            placeholder="Email Address"
-                        />
-                        <input
-                            className="signInField"
-                            name="passwordOne"
-                            value={passwordOne}
-                            onChange={this.onChange}
-                            type="password"
-                            placeholder="Password"
-                        />
-                        <input
-                            className="signInField"
-                            name="passwordTwo"
-                            value={passwordTwo}
-                            onChange={this.onChange}
-                            type="password"
-                            placeholder="Confirm Password"
-                        />
-                        <button className="signInField signInButton" disabled={isInvalid} type="submit">
-                            Sign Up
-                        </button>
+            <div>
+                <h1>Sign Up</h1>
+                <form onSubmit={this.onSubmit}>
+                    <input
+                        className="signInField"
+                        name="username"
+                        value={username}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Full Name"
+                    />
+                    <input
+                        className="signInField"
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Email Address"
+                    />
+                    <input
+                        className="signInField"
+                        name="passwordOne"
+                        value={passwordOne}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                    />
+                    <input
+                        className="signInField"
+                        name="passwordTwo"
+                        value={passwordTwo}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Confirm Password"
+                    />
+                    <button className="signInField signInButton" disabled={isInvalid} type="submit">
+                        Sign Up
+                    </button>
 
-                        {error && <p>{error.message}</p>}
-                    </form>
-                </div>
+                    {error && <p>{error.message}</p>}
+                </form>
             </div>
         );
     }

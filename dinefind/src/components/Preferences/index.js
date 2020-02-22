@@ -4,6 +4,7 @@ import Slider from "@material-ui/core/Slider";
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {FormGroup} from "@material-ui/core";
+import firebase from "firebase";
 
 const marks = [
     {
@@ -60,19 +61,25 @@ export default function Preferences() {
                 How far?
             </Typography>
             <Slider
+                className="slider"
                 defaultValue={0}
                 getAriaValueText={valuetext}
                 valueLabelDisplay="auto"
                 step={5}
                 marks={marks} />
             <FormControlLabel control={
-                <Switch checked={state.chains} onChange={handleChange('chains')} value="chains" />
+                <Switch className="switch" checked={state.chains} onChange={handleChange('chains')} value="chains" />
             } label="Do you like chain restaurants?"
                 />
             <FormControlLabel control={
-                <Switch checked={state.visited} onChange={handleChange('visited')} value="visited" />
+                <Switch className="switch" checked={state.visited} onChange={handleChange('visited')} value="visited" />
             } label="Do you like to revisit them?"
             />
+            <button
+                type = "submit"
+            >
+                </button>
         </FormGroup>
+
     )
 }

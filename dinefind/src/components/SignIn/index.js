@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignUp';
@@ -10,8 +10,8 @@ import * as ROUTES from '../../constants/routes';
 document.body.style = 'background: mediumseagreen;';
 
 const SignInPage = () => (
-    <div className="signInForm centered-container">
-        <div className="centered-flexbox">
+    <div className="signInForm centered-container row">
+        <div className="col-4 col-s-8">
         <SignInForm />
         <SignUpLink />
         <PasswordForgetLink />
@@ -92,6 +92,18 @@ const SignInForm = compose(
     withFirebase,
 )(SignInFormBase);
 
+const SignInLink = () => (
+    <p className="signInLink center">
+        Already have an account? <Link to={ROUTES.SIGN_IN}>Log in</Link>
+    </p>
+);
+
+const SignInLink2 = () => (
+    <p className="signInLink center">
+        Go back to <Link to={ROUTES.SIGN_IN}>Log in</Link>
+    </p>
+);
+
 export default SignInPage;
 
-export { SignInForm };
+export { SignInForm, SignInLink, SignInLink2 };
