@@ -25,7 +25,10 @@ p {
   font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
   font-size: 16px;
 }
+
 a { color: darkslategrey; }
+
+.note { font-size: 12px}
 
 .white { color: white }
 
@@ -36,6 +39,12 @@ a { color: darkslategrey; }
   padding: 0 32px;
   display: block;
   clear: both;
+}
+
+.indent p {
+  padding-left: 50px;
+  margin-top: 0px;
+  line-height: 16px;
 }
 
 [class*="col-"] {
@@ -162,8 +171,4 @@ a { color: darkslategrey; }
 
 .slider {
   width: 50%;
-}
-
-.switch {
-
 }
