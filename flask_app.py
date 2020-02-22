@@ -8,7 +8,6 @@ import populartimes
 from operator import itemgetter, attrgetter
 import pyrebase
 from flask_cors import CORS
-CORS(app)
 
 key = 'AIzaSyANqmnEgWqv-bZR0vXTQopHPPfiwWkkkqE'
 config = {
@@ -23,7 +22,7 @@ db = firebase.database()                    #Firebase database object
 auth = firebase.auth()                      #Firebase authentication object
 storage = firebase.storage()                #Firebase storage object
 app = Flask(__name__)
-
+CORS(app)
 def location():
     g = geocoder.ip('me')
     return "{}, {}".format(g.latlng[0], g.latlng[1])
