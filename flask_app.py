@@ -7,6 +7,8 @@ import re
 import populartimes
 from operator import itemgetter, attrgetter
 import pyrebase
+from flask_cors import CORS
+CORS(app)
 
 key = 'AIzaSyANqmnEgWqv-bZR0vXTQopHPPfiwWkkkqE'
 config = {
