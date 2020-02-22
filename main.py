@@ -4,8 +4,17 @@ import geocoder
 import re
 import populartimes
 from operator import itemgetter, attrgetter
+import pyrebase
 
 key = 'AIzaSyANqmnEgWqv-bZR0vXTQopHPPfiwWkkkqE'
+firebase_config = {
+    "apikey" : 'AIzaSyAqEFmVsDH5PmYM2MGng6bLUJh5CHsS9pU',
+    "authDomain" : "dinefind-e3e7c.firebaseapp.com",
+    "databaseURL" : "https://dinefind-e3e7c.firebaseio.com",
+    "storageBucket" : "dinefind-e3e7c.appspot.com"
+}
+
+# firebase = pyrebase.initialize_app(firebase_config)
 
 def location():
     g = geocoder.ip('me')
@@ -69,18 +78,50 @@ def filter(data, fil):
 
     return final
 
-# sor = {current_crowd: 0, price: 0, rating: 0}
-# 0 does not sort, 1 is low to high, 2 is high to low 
+# sor = {crowd: 0, price: 0, rating: 0}
+# 0 does not sort, 1 is low to high, 2 is high to low
 #[(a,b), (c,d)
+def current_crowd(id):
+    try:
+        pop = populartimes.get_id(key, id)
+        current = pop["current_popularity"]
+    #popular_time = pop["populartimes"]
+        return current
+    except:
+        return -1
 
 def data_sort(data, sor):
-    if 
+    data_to_sort, asc_dsc, final, final_data, actual_val, nan_val = "", True, [], [], [], []
+    for key, val in sor.items():
+        if val == 1:
+            data_to_sort = key
+            asc_dsc = False
+            break
+        elif val == 2:
+            data_to_sort = key
+            asc_dsc = True
+            break
+    for index, place in enumerate(data["results"]):
+        if key != "crowd":
+            try:
+                final.append((index, place[data_to_sort]))
+            except:
+                final.append((index, -1))
+        else:
+            id = place["place_id"]
+            final.append((index, current_crowd(id)))
+    sorted_array = sorted(final, key=itemgetter(1), reverse=asc_dsc)
+    for index, item in enumerate(sorted_array):
+        if item[1] == -1:
+            nan_val.append(item)
+        else:
+            actual_val.append(item)
+    actual_val += nan_val
+    for item in actual_val:
+        final_data.append(data["results"][int(item[0])])
+    return final_data
 
-def time(id):
-    pop = populartimes.get_id(key, id)
-    current = pop["current_popularity"]
-    #popular_time = pop["populartimes"]
-    return current
+
 # current_crowd
 #
 #
@@ -90,10 +131,24 @@ def time(id):
 # cur = time(id)
 # print("Name: {}, Current: {}".format(name, cur))
 data = get_list(150000, location())
-fil = {"open": 0, "chain": 1, "prev": 0, "rating": 0}
-final_data = filter(data, fil)
-print('\n----------------\n')
-print(data["results"])
-print('\n----------------\n')
-print(final_data)
-print('\n----------------\n')
+# fil = {"open": 0, "chain": 1, "prev": 0, "rating": 0}
+# final_data = filter(data, fil)
+# print('\n----------------\n')
+# print(data["results"])
+# print('\n----------------\n')
+# print(final_data)
+# print('\n----------------\n')
+# print(data)
+# print('\n\n\n ---------- \n\n\n')
+
+# data_sort(data, {"crowd" : 0, "rating" : 0, "price_level" : 1})
+
+fin = data_sort(data, {"crowd" : 1, "rating" : 0, "price_level" : 0})
+print("{:50s}{:10s}{:10s}{:10s}".format("Name", "Crowd", "Rating", "Price"))
+print("#"*80)
+for item in fin:
+
+    try:
+        print("{:50s}{:10s}{:10f}{:>10f}".format(item["name"], "NaN", item["rating"], item["price_level"]))
+    except:
+        print("{:50s}{:10s}{:10f}{:>10s}".format(item["name"], "NaN", item["rating"], "NaN"))
