@@ -3,8 +3,9 @@ import Switch from "@material-ui/core/Switch";
 import Slider from "@material-ui/core/Slider";
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Rating from '@material-ui/lab/Rating';
 import {FormGroup} from "@material-ui/core";
-import firebase from "firebase";
+import Box from "@material-ui/core/Box";
 
 const marks = [
     {
@@ -48,9 +49,14 @@ function valueLabelFormat(value) {
     return marks.findIndex(mark => mark.value === value) + 1;
 }
 export default function Preferences() {
-    const [state, setState] = React.useState({
-        chains: true,
-        visited: true
+        const [value, setValue] = React.useState(2);
+
+        const [state, setState] = React.useState({
+            open: true,
+            chains: true,
+            visited: true,
+            distance: 0,
+            rating: 0
     });
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
@@ -61,6 +67,7 @@ export default function Preferences() {
                 How far?
             </Typography>
             <Slider
+                name="distance"
                 className="slider"
                 defaultValue={0}
                 getAriaValueText={valuetext}
@@ -72,11 +79,29 @@ export default function Preferences() {
             } label="Do you like chain restaurants?"
                 />
             <FormControlLabel control={
-                <Switch className="switch" checked={state.visited} onChange={handleChange('visited')} value="visited" />
+            <Switch className="switch" checked={state.visited} onChange={handleChange('visited')} value="visited" />
             } label="Do you like to revisit them?"
+                 />
+            <FormControlLabel control={
+                <Switch className="switch" checked={state.open} onChange={handleChange('open')} value="open" />
+            } label="Should it be open now?"
             />
+            <Box component="fieldset" mb={3} borderColor="transparent">
+                <Typography component="legend">How should it be rated?</Typography>
+                <Rating
+                    name="rating"
+                    value={value}
+                    onChange={(event, newValue) => {
+                    setValue(newValue);
+                    }}
+                    />
+            </Box>
             <button
                 type = "submit"
+                onClick={event => {
+
+                }
+                }
             >
                 </button>
         </FormGroup>
