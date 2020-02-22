@@ -47,8 +47,8 @@ class PasswordForgetFormBase extends Component {
         const isInvalid = email === '';
 
         return (
-            <div className="signInForm centered-container">
-                <div className="centered-flexbox">
+            <div className="signInForm centered-container row">
+                <div className="col-4 col-s-8">
                     <h1>Reset Password</h1>
                     <form onSubmit={this.onSubmit}>
                         <input

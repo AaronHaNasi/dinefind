@@ -60,17 +60,18 @@ export default function Preferences() {
                 How far?
             </Typography>
             <Slider
+                className="slider"
                 defaultValue={0}
                 getAriaValueText={valuetext}
                 valueLabelDisplay="auto"
                 step={5}
                 marks={marks} />
             <FormControlLabel control={
-                <Switch checked={state.chains} onChange={handleChange('chains')} value="chains" />
+                <Switch className="switch" checked={state.chains} onChange={handleChange('chains')} value="chains" />
             } label="Do you like chain restaurants?"
                 />
             <FormControlLabel control={
-                <Switch checked={state.visited} onChange={handleChange('visited')} value="visited" />
+                <Switch className="switch" checked={state.visited} onChange={handleChange('visited')} value="visited" />
             } label="Do you like to revisit them?"
             />
         </FormGroup>
