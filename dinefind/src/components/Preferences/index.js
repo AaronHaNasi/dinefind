@@ -4,6 +4,7 @@ import Slider from "@material-ui/core/Slider";
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {FormGroup} from "@material-ui/core";
+import firebase from "firebase";
 
 const marks = [
     {
@@ -73,6 +74,11 @@ export default function Preferences() {
                 <Switch checked={state.visited} onChange={handleChange('visited')} value="visited" />
             } label="Do you like to revisit them?"
             />
+            <button
+                type = "submit"
+            >
+                </button>
         </FormGroup>
+
     )
 }
